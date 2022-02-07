@@ -1,0 +1,72 @@
+1. 
+SELECT model, speed, hd FROM pc
+WHERE price < 500;
+model speed   hd
+1232	500	10
+1232	450	8
+1232	450	10
+1260	500	10
+
+2.
+SELECT maker FROM product
+WHERE type = 'Printer';
+ maker
+A
+D
+A
+A
+D
+E
+
+3.
+SELECT model, speed, hd FROM pc
+WHERE cd = '12x' OR cd = '24x' AND price < 600;
+model	speed	hd
+1232	500	5
+1233	500	5
+1232	500	10
+1232	450	8
+1232	450	10
+1260	500	10
+
+4.
+SELECT maker FROM product
+WHERE type = 'PC';
+maker
+B
+A
+A
+E
+E
+E
+
+5.
+SELECT AVG(speed) FROM pc
+INNER JOIN product
+ON (pc.model = product.model)
+WHERE maker = 'A';
+AVG(speed)
+606.2500
+
+6. не поняла, как выполнить запрос
+7.
+SELECT maker, MIN(price) AS price FROM product
+INNER JOIN printer
+ON (product.model = printer.model)
+WHERE color = 'y';
+maker	price
+D	270
+
+8.
+SELECT maker, COUNT(*) FROM product
+GROUP BY maker
+HAVING COUNT(model) = 1;
+maker	COUNT(*)
+C	1
+
+
+
+
+
+
+
